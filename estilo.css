@@ -1,0 +1,437 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
+
+body {
+    font-family: Arial, sans-serif;
+    color: #5a3e36;
+    background-color: #f4ece4;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* ===== HEADER ===== */
+header {
+    position: relative;
+    background: linear-gradient(rgba(231, 230, 229, 0.5), rgba(231, 230, 229, 0.5)), url('images/menu.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* nota: lo cambio a scroll en mobile via media query */
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    padding: 0 20px;
+}
+
+header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(231, 230, 229, 0.6);
+    z-index: -1;
+}
+
+header h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #5a3e36;
+    margin-bottom: 2rem;
+    font-family: "Playwrite IN", serif;
+    transition: color 0.3s ease;
+}
+
+header h2 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #5a3e36;
+    margin-bottom: 3rem;
+    font-family: "Fraunces", serif;
+    transition: color 0.3s ease;
+}
+
+header p {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: #5a3e36;
+    margin-bottom: 2.5rem;
+}
+
+/* Header primary CTA */
+header .button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: #5a3e36; /* tu color original */
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    margin-top: 2rem;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+header .button:hover {
+    background-color: #8c6e5a;
+    transform: translateY(-4px);
+}
+
+/* ===== NOSOTROS ===== */
+#nosotros {
+    background-color: #f6f3ee;
+    color: #3b2a21;
+    padding: 2rem 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+}
+
+.nosotros-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.nosotros-texto {
+    flex: 1;
+    max-width: 600px;
+}
+
+.nosotros-texto h3 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.nosotros-texto p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    color: #5a3e36;
+}
+
+/* Outline CTA */
+.button-outline {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border: 2px solid #5a3e36;
+    color: #5a3e36;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+.button-outline:hover {
+    background-color: #5a3e36;
+    color: #fff;
+    transform: translateY(-4px);
+}
+
+.nosotros-imagen {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nosotros-imagen img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+}
+
+/* ===== SERVICIOS 1 ===== */
+#servicios1 {
+    background-color: #3b2a21;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0;
+    height: 103vh;
+}
+
+.servicios1-contenedor {
+    display: flex;
+    align-items: center;
+    gap: 6rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.servicios1-contenedor img {
+    width: 50%;
+    height: auto;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+.servicios1-contenedor img:hover { transform: scale(1.05); }
+
+/* ===== SERVICIOS 2 (flip cards) ===== */
+#servicios2 {
+    background-color: #fff;
+    color: #3b2a21;
+    padding: 80px 5%;
+    text-align: center;
+}
+
+#servicios2 h3 {
+    font-size: 2.2rem;
+    font-weight: bold;
+    margin-bottom: 3rem;
+    font-family: "Dancing Script", serif;
+}
+
+.service-list {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: 3rem;
+    margin-bottom: 2.5rem;
+}
+
+/* FLIP 3D */
+.container { perspective: 1000px; }
+.card {
+    width: 280px;
+    height: 360px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform .6s cubic-bezier(.4, 0, .2, 1);
+    cursor: pointer;
+}
+.container:hover .card { transform: rotateY(180deg); }
+.card-front, .card-back {
+    position: absolute; width: 100%; height: 100%;
+    backface-visibility: hidden;
+    border-radius: 12px; overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+.card-front img { width: 100%; height: 100%; object-fit: cover; }
+.card-back {
+    background-color: #212121; color: #d4d3d3;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    padding: 20px; transform: rotateY(180deg); text-align: center;
+}
+.card-back h4 { font-size: 1.4rem; margin-bottom: 1rem; }
+.card-back p { font-size: 1rem; line-height: 1.4; }
+
+/* ===== TESTIMONIOS ===== */
+#testimonios {
+    background-color: #fbf6f0;
+    padding: 50px 20px;
+    font-family: 'Arial', sans-serif;
+    color: #4a4a4a;
+    text-align: center;
+    height: 110vh;
+    transition: all 0.3s ease;
+}
+#testimonios h3 { font-size: 2em; font-weight: bold; margin-bottom: 30px; color: #4a4a4a; }
+
+.reviews-container {
+    width: 100%;
+    max-width: 1000px;
+    height: 500px;
+    margin: 0 auto;
+    overflow-y: hidden;
+    border: 2px solid #c5a880;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    padding: 10px;
+    position: relative;
+}
+
+/* ===== FOOTER ===== */
+#contacto {
+  background-color: #3b2a20;
+  color: #fff;
+  font-family: 'Arial', sans-serif;
+  padding: 50px 20px 20px;
+  text-align: center;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-col { flex: 1; min-width: 250px; }
+.footer-col h2, .footer-col h4 { color: #fff; margin-bottom: 15px; }
+.footer-col ul { list-style: none; padding: 0; }
+.footer-col ul li { margin-bottom: 10px; }
+
+.footer-col ul li a {
+  text-decoration: none;
+  color: #ddd;
+  transition: color 0.25s ease;
+}
+.footer-col ul li a:hover { color: #fff; }
+
+.footer-social { margin: 15px 0; }
+.footer-social a {
+  color: #ddd; margin-right: 15px; font-size: 1.3rem;
+  transition: color 0.25s ease;
+}
+.footer-social a:hover { color: #25d366; }
+
+/* Botón WhatsApp (footer) */
+.whatsapp-btn {
+  display: inline-block;
+  padding: 10px 18px;
+  background-color: #25d366;
+  color: #fff;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.25s ease;
+  margin-top: 15px;
+}
+.whatsapp-btn:hover { background-color: #1ebe5d; }
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.2);
+  margin-top: 30px;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+/* ===== BOTÓN FLOTANTE WHATSAPP (derecha) ===== */
+.whatsapp-fixed {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #25d366;
+  color: #fff;
+  font-size: 1.4rem;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+  z-index: 999;
+  text-decoration: none;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.whatsapp-fixed:hover { transform: scale(1.06); box-shadow: 0 10px 28px rgba(0,0,0,0.24); }
+
+/* ===== BOTÓN SUBIR (izquierda lateral) ===== */
+.scroll-top {
+  position: fixed;
+  left: 20px;
+  bottom: 90px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #5a3e36; /* tu color */
+  color: #fff;
+  border: none;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+  z-index: 998;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.25s ease, transform 0.25s ease, box-shadow 0.18s ease;
+}
+.scroll-top:hover { transform: translateY(0) scale(1.05); box-shadow: 0 10px 28px rgba(0,0,0,0.24); }
+.scroll-top.show { opacity: 1; transform: translateY(0); }
+
+/* ===== ICONOS REDES (global) ===== */
+i { font-size: 30px; color: white; margin: 10px; }
+
+/* ===== RESPONSIVE GENERALES ===== */
+@media (max-width: 768px) {
+    /* header adaptaciones móviles */
+    header {
+        background-attachment: scroll; /* evita problemas iOS */
+        height: auto;
+        min-height: 60vh;
+        padding: 60px 20px;
+        justify-content: center;
+    }
+    header h1 { font-size: 2.2rem; margin-bottom: 1rem; }
+    header h2 { font-size: 1.1rem; margin-bottom: 1rem; }
+    header p { font-size: 1rem; margin-bottom: 1rem; }
+
+    /* botones adaptativos */
+    header .button, .button-outline {
+        font-size: 0.95rem;
+        padding: 0.6rem 1rem;
+    }
+
+    /* move floating controls slightly in mobile so they don't collide con barras */
+    .whatsapp-fixed { bottom: 18px; right: 18px; width: 54px; height: 54px; font-size: 1.25rem; }
+    .scroll-top { left: 18px; bottom: 82px; width: 44px; height: 44px; }
+
+    /* servicios y otros ajustes (mantengo tu responsive) */
+    .nosotros-container { flex-direction: column; align-items: center; text-align: center; gap: 1rem; }
+    .nosotros-texto { max-width: 90%; }
+    .nosotros-imagen { width: 100%; margin-top: 1rem; }
+
+    #servicios1 .servicios1-contenedor { flex-direction: column; gap: 2rem; }
+    #servicios1 .servicios1-contenedor img { width: 90%; max-width: 400px; }
+
+    #servicios2 h3 { font-size: 1.5rem; margin-bottom: 1rem; }
+    .service-list { flex-direction: column; gap: 1.5rem; justify-content: center; }
+
+    #testimonios { padding: 30px 10px; height: auto; }
+    .reviews-container { height: 360px; } /* reduce en móvil */
+}
+
+/* tablet */
+@media (max-width: 1280px) {
+    header h1 { font-size: 2.5rem; }
+    header h2 { font-size: 1.4rem; }
+    .whatsapp-fixed { right: 22px; bottom: 22px; }
+    .scroll-top { left: 22px; bottom: 90px; }
+}
+
+/* mejora de interacción: reduce parpadeo en reducción/agrandamiento */
+* { -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+
+
+/* Botones */
+.button:active {
+  transform: scale(0.95);
+}
+
+/*Creditos*/
+.credits {
+  font-size: 0.85rem;
+  color: #888;
+  margin-top: 15px;
+}
+.credits span {
+  color: var(--blue-accent); /* azul claro para destacarlo */
+  font-weight: 500;
+}
