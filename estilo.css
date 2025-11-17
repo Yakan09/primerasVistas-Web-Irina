@@ -453,7 +453,7 @@ header .button:hover {
 }
 
 .footer-col ul li a:hover {
-    color: #fff;
+    color: #f8d210;
 }
 
 .footer-social {
@@ -474,6 +474,59 @@ header .button:hover {
 .footer-social a:hover {
     color: #25d366;
 }
+/* ==== CONTACTO EN FOOTER ESTILO INSTAGRAM ==== */
+.contact-link {
+    display: inline-flex;        /* para alinear icono + texto */
+    align-items: center;         /* centra verticalmente el icono */
+    color: #fff;
+    text-decoration: none;
+    margin: 5px 0;
+    font-weight: 500;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.contact-link i {
+    margin-right: 8px;           /* separación entre icono y texto */
+    font-size: 1.2rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.contact-link:hover {
+    color: #f8d210;              /* color dorado al pasar el ratón */
+    transform: translateX(4px);  /* ligera animación de desplazamiento */
+}
+
+.contact-link:hover i {
+    transform: scale(1.2);       /* icono aumenta un poco */
+    color: #f8d210;
+}
+
+/* ==== INSTAGRAM LINK ESTILO IG ==== */
+.footer-social a {
+    display: inline-flex;
+    align-items: center;
+    color: #fff;
+    text-decoration: none;
+    margin: 5px 0;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-social a i {
+    margin-right: 8px;
+    font-size: 1.2rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.footer-social a:hover {
+    color: #f8d210;
+    transform: translateX(4px);
+}
+
+.footer-social a:hover i {
+    transform: scale(1.2);
+    color: #f8d210;
+}
+
 
 /* Botón WhatsApp (footer) */
 .whatsapp-btn {
@@ -674,7 +727,7 @@ i {
         height: 44px;
     }
 
-    /* servicios y otros ajustes (mantengo tu responsive) */
+    /* servicios y otros ajustes  */
     .nosotros-container {
         flex-direction: column;
         align-items: center;
@@ -769,4 +822,6 @@ i {
     /* azul claro para destacarlo */
     font-weight: 500;
 }
+
+
 
